@@ -15,6 +15,6 @@ describe('Todo List app', () => {
       cy.get('[data-testid="addButton"')
         .should('be.disabled')
 
-      cy.contains('Todo List is empty!')
+      cy.contains(/Todo List is empty!/i)
   })
 })
