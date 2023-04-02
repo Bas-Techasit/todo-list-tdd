@@ -24,5 +24,12 @@ describe('Todo List App.', () => {
       expect(buttonElement.innerHTML).toBe('Add')
       expect(buttonElement).toBeDisabled()
     })
+
+    test('Should be show message "Todo List is Empty"', () => {
+      render(<App />)
+      const message = screen.queryByText(/Todo List is empty/i)
+      expect(message).toBeInTheDocument()
+    })
+
   })
 })
