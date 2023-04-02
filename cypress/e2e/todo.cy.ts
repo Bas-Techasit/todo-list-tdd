@@ -37,5 +37,8 @@ describe('Todo List app', () => {
 
     cy.get('[data-testid="deleteButton"]')
       .should('be.visible')
+
+    cy.findByText(/Todo list is empty!/i)
+      .should('not.exist')
   })
 })
