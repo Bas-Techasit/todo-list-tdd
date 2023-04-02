@@ -6,6 +6,7 @@ function App() {
     <>
       <h1 data-testid="title">Todo List</h1>
       <AddItem />
+      <p>Todo List is empty!</p>
     </>
   )
 }
