@@ -34,15 +34,27 @@ describe('Todo List App.', () => {
   })
 
   describe('User add somthing to the list.', () => {
-
-    test('When user type in the text field, the add-button should enable.', () => {
-      render(<AddItem />)
+    test('When user type in the text field, the add-button should enable.', async () => {
+     render(<AddItem />)
       const inputField: HTMLInputElement = screen.getByTestId('addItemField')
-      userEvent.type(inputField, 'Do somthing that amazing!')
-      expect(inputField.value).toBe('Do somthing that amazing!')
+      await userEvent.type(inputField, "Someting")
+      expect(inputField.value).toBe("Someting")
       
       const addButton: HTMLButtonElement = screen.getByTestId('addButton')
       expect(addButton).toBeEnabled()
     })
+
+    test('Clean the text field, when user clicked the add-button.', async () => {
+      render(<AddItem />)
+      const inputField: HTMLInputElement = screen.getByTestId('addItemField')
+      userEvent.type(inputField, 'Something')
+
+      const addButton: HTMLButtonElement = screen.getByTestId('addButton')
+      await userEvent.click(addButton)
+
+      expect(inputField.value).toEqual('')
+    })
+
+    
   })
 })
