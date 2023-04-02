@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 import AddItem from './components/AddItem';
+import userEvent from '@testing-library/user-event';
 
 describe('Todo List App.', () => {
 
@@ -30,6 +31,18 @@ describe('Todo List App.', () => {
       const message = screen.queryByText(/Todo List is empty/i)
       expect(message).toBeInTheDocument()
     })
+  })
 
+  describe('User add somthing to the list.', () => {
+
+    test('When user type in the text field, the add-button should enable.', () => {
+      render(<AddItem />)
+      const inputField: HTMLInputElement = screen.getByTestId('addItemField')
+      userEvent.type(inputField, 'Do somthing that amazing!')
+      expect(inputField.value).toBe('Do somthing that amazing!')
+      
+      const addButton: HTMLButtonElement = screen.getByTestId('addButton')
+      expect(addButton).toBeEnabled()
+    })
   })
 })
