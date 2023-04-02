@@ -17,5 +17,12 @@ describe('Todo List App.', () => {
       const inputElement: HTMLInputElement = screen.getByTestId('addItemField')
       expect(inputElement.value).toBe('')
     })
+
+    test('Add-Button should be disable', () => {
+      render(<AddItem />) 
+      const buttonElement: HTMLButtonElement = screen.getByTestId('addButton')
+      expect(buttonElement.innerHTML).toBe('Add')
+      expect(buttonElement).toBeDisabled()
+    })
   })
 })
