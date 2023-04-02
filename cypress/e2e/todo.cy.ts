@@ -10,7 +10,7 @@ describe('Todo List app', () => {
         .contains('Todo List')
 
       cy.get('[data-testid="addItemField"]')
-        .contains('')
+        .should('have.value', '')
       
       cy.get('[data-testid="addButton"')
         .should('be.disabled')
