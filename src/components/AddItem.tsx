@@ -1,21 +1,18 @@
-import { useState } from "react";
+import React from "react";
 
-function AddItem() {
-    const [text, setText] = useState('')
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setText(e.target.value)
-    }    
+interface AddItemProps {
+    text: string
+    onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onSubmit: (e: React.FormEvent) => void
+}
 
-    function handleSubmit(e: React.FormEvent) {
-        e.preventDefault()
-        setText('')
-    }
+function AddItem({ onSubmit, onInputChange, text }: AddItemProps) {
 
     return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onSubmit}>
         <input 
             data-testid="addItemField"
-            onChange={handleChange}
+            onChange={onInputChange}
             value={text}
         />
         <button 

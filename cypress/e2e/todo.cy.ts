@@ -18,9 +18,9 @@ describe('Todo List app', () => {
       cy.contains(/Todo List is empty!/i)
   })
 
-  it('User add a someting in the list.', () => {
+  it('User add a something in the list.', () => {
     cy.get('[data-testid="addItemField"')
-      .type('Do someting that amazing!')
+      .type('Do something that amazing!')
 
     cy.get('[data-testid="addButton"]')
       .should('be.enabled')
@@ -29,8 +29,8 @@ describe('Todo List app', () => {
     cy.get('[data-testid="addItemField"]')
       .should('have.value', '')
 
-    cy.get('[data-testid="todo"]')
-      .should('contain.text', 'Do someting that amazing!')
+    cy.get('[data-testid="textContent"]')
+      .should('contain.text', 'Do something that amazing!')
 
     cy.get('[data-testid="checkButton"]')
       .should('be.visible')
