@@ -14,10 +14,14 @@ function App() {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
-        const id = items.length === 0 ? 1 : items.length + 1
-        const newItem: Item = { id: id, text: text, isComplete: false}
-        setItem([...items, newItem])
+        addItem()
         setText('')
+    }
+
+    function addItem() {
+        const id = items.length === 0 ? 1 : items.length + 1
+        const newItem: Item = {id: id, text: text, isComplete: false}
+        setItem([...items, newItem])
     }
 
     return (
